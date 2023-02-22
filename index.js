@@ -51,14 +51,14 @@ app.post("/estudiantes", (req, res) => {
 // Para usarlo el valor :nombre debe ser escrito en la URL como, por ejemplo: /estudiantes/daniel
 app.delete("/estudiantes/:nombre", (req, res) => {
     const nombre = req.params.nombre;
-    console.log("Deleting student with name:", nombre);
+    console.log("Borrando estudiantes con nombre:", nombre);
     fs.readFile("estudiantes.json", "utf8", (error, data) => {
       if (error) {
         return res.status(500).json({ error: 500, message: "Ha ocurrido un error al leer los estudiantes." });
       }
   
       const estudiantes = JSON.parse(data);
-      console.log("Current estudiantes array:", estudiantes);
+      console.log("Array actual de estudiantes:", estudiantes);
       const estudianteIndex = estudiantes.estudiantes.findIndex(estudiante => estudiante.nombre === nombre);
   
       if (estudianteIndex === -1) {
